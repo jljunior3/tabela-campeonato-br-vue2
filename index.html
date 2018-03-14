@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BRen">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>Campeonato Brasileiro</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+    
+      <div class="row">
+        <h3>Campeonato Brasileiro - Série A - 2018</h3>
+        <br><br><br>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Pontos</th>
+              <th>Gols Marcados</th>
+              <th>Gols Sofridos</th>
+              <th>Saldo</th>
+            </tr>
+            <tbody>
+              <tr v-for="time in times">
+                <td>
+                  <img :src="time.escudo" style="height:30px; width:30px;">
+                </td>
+                <td><strong>{{time.nome}}</strong></td>
+                <td>{{time.pontos}}</td>
+                <td>{{time.gm}}</td>
+                <td>{{time.gs}}</td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row justify-content-center">
+        <form action="" class="form-inline">
+          <div class="form-group">
+            <input type="number" class="form-control">
+            <label class="control-label">
+              <img src="" style="height:30px; width:30px;" alt="">
+            </label>
+          </div>
+          <span>X</span>
+          <div class="form-group">
+            <label class="control-label">
+              <img src="" style="height:30px; width:30px" alt="">
+            </label>
+            <input type="number" class="form-control">
+          </div>
+          &nbsp;&nbsp;<button type="button" class="btn btn-primary">Fim de Jogo</button>
+        </form>
+      </div>
+
+      <br>
+
+    </div>
+    <script src="/dist/build.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous">
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  </body>
+</html>
