@@ -84,8 +84,8 @@ new Vue({
       let colecao = _.orderBy(this.times, this.order.keys, this.order.sort);
 
       return _.filter(colecao, item => {
-        console.log(item.nome.indexOf(this.filter));
-        return item.nome.indexOf(this.filter) >= 0;
+        item.nome = item.nome.toLowerCase();
+        return item.nome.indexOf(this.filter.toLowerCase()) >= 0;
       })
     }
   },
