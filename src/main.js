@@ -5,12 +5,20 @@
 
 import Vue from 'vue'
 import {Time} from './time';
+import _ from 'lodash';
 
 
 
 new Vue({
   el: '#app',
   data :{
+    filter : '',
+    order: {
+      keys: ['pontos', 'gm', 'gs'],
+      sort: ['desc', 'desc', 'asc']
+    },
+    colunas: ['nome', 'pontos', 'gm', 'gs', 'saldo'],
+    view: 'tabela',
     times :[
       new Time('America MG', require('./assets/america_mg_60x60.png')),
       new Time('Atletico MG', require('./assets/atletico_mg_60x60.png')),
@@ -43,16 +51,50 @@ new Vue({
         gols: 0
       }
     }
-    // ,
-    // created(){
-    //   let indexCasa = Math.floor(Math.random * 20);
-    //   let indexFora = Math.floor(Math.random * 20);
+  },
+  methods: {
+    fimJogo(){
+      let timeAdversario = this.novoJogo.fora.time;
+      let gols = +this.novoJogo.casa.gols;
+      let golsAdversario = +this.novoJogo.fora.gols;
+      this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario);
+      this.showView('tabela');
+    },
+    createNovoJogo() {
+      let indexCasa = Math.floor(Math.random() * 20),
+        indexFora = Math.floor(Math.random() * 20);
 
-    //   this.novoJogo.casa.time = this.times[indexCasa];
-    //   this.novoJogo.casa.gols = 0;
-    //   this.novoJogo.fora.time = this.times[indexFora];
-    //   this.novoJogo.fora.gols = 0;
+      this.novoJogo.casa.time = this.times[indexCasa];
+      this.novoJogo.casa.gols = 0;
+      this.novoJogo.fora.time = this.times[indexFora];
+      this.novoJogo.fora.gols = 0;
+      this.showView('novoJogo');
+    },
+    showView(view) {
+      this.view = view;
+    },
+    sortBy(coluna) {
+      this.order.keys = coluna;
+      this.order.sort = this.order.sort == 'desc' ? 'asc' : 'desc';
+      console.log(this.order.keys, this.order.sort);
+    }
+  },
+  computed: {
+    timesFiltered() {
+      let colecao = _.orderBy(this.times, this.order.keys, this.order.sort);
 
-    // }
+      return _.filter(colecao, item => {
+        console.log(item.nome.indexOf(this.filter));
+        return item.nome.indexOf(this.filter) >= 0;
+      })
+    }
+  },
+  filters: {
+    saldo(time){
+      return time.gm - time.gs;
+    },
+    ucwords(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
   }
 })
