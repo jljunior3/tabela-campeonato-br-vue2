@@ -85,6 +85,54 @@
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="/node_modules/notifyjs/dist/notify.js"></script>
+
+<script>
+
+//este funciona muito bem
+  // (() =>{
+  //   if(Notification.permission !== 'granted'){
+  //       Notification.requestPermission()
+  //   } else {
+  //     console.log('entrou na function');
+  //     setInterval(function(){
+  //           new Notification('Teste A',{
+  //               body: 'Olá mundo !'
+  //           }) 
+  //       }, 1000);
+  //   }
+  // })();
+// <!-- 
+// if (!Notify.needsPermission) {
+//   new Notify('Yo dawg!', {
+// 	body: 'This is an awesome notification 12313121'
+//   });
+//     // doNotification();
+// } else if (Notify.isSupported()) {
+//     Notify.requestPermission(onPermissionGranted, onPermissionDenied);
+// }
+
+// function onPermissionGranted() {
+//   console.log('Permission has been granted by the user');
+//   new Notify('Yo dawg!', {
+// 	body: 'This is an awesome notification 5555555555'
+//   });
+// 	// doNotification();
+// }
+
+// function onPermissionDenied() {
+// 	console.warn('Permission has been denied by the user');
+// }
+
+//   //window.location.replace("http://stackoverflow.com");
+//   var myNotification = new Notify('Yo dawg!', {
+// 	body: 'This is an awesome notification 66666666'
+//   });
+
+//   myNotification.show(); -->
+</script>
+
+  
 </body>
 
 </html>
